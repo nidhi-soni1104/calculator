@@ -1,2 +1,0 @@
-class CalculatorsController < ApplicationController
-end
