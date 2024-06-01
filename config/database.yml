@@ -10,3 +10,7 @@ default: &default
 development:
   <<: *default
   database: string_calculator
+
+test:
+  <<: *default
+  database: test_string_calculator
