@@ -22,4 +22,10 @@ class CalculatorTest < ActiveSupport::TestCase
   test "handle new lines between numbers" do
     assert_equal 6, Calculator.add("1\n2,3")
   end
+
+  test "support different delimiters" do
+    assert_equal 3, Calculator.add("//;\n1;2")
+    assert_equal 6, Calculator.add("//|\n1|2|3")
+    assert_equal 10, Calculator.add("//nidhi\n2nidhi3nidhi5")
+  end
 end
