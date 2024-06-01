@@ -1,5 +1,5 @@
 class Calculator < ApplicationRecord
-	def self.add(numbers)
+  def self.add(numbers)
     return 0 if numbers.empty?
 
     delimiter = ","
@@ -9,6 +9,13 @@ class Calculator < ApplicationRecord
       numbers = numbers_part
     end
 
-    numbers.split(/#{Regexp.escape(delimiter)}|\n/).map(&:to_i).sum
+    number_array = numbers.split(/#{Regexp.escape(delimiter)}|\n/).map(&:to_i)
+    negative_numbers = number_array.select { |num| num < 0 }
+
+    if negative_numbers.any?
+      raise "negative numbers not allowed: #{negative_numbers.join(',')}"
+    end
+
+    number_array.sum
   end
 end
